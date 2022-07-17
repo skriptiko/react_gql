@@ -1,7 +1,0 @@
-{
-  "request":{
-    "id": "string",
-    "name": "string",
-    "type": "string"
-  }
-}

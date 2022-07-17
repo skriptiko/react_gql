@@ -1,14 +1,14 @@
 const low = require('lowdb')
 const FileSync = require('lowdb/adapters/FileSync')
 
-const adapter = new FileSync('db.json')
+const adapter = new FileSync('src/db/db.json')
 const db = low(adapter)
 
-const createPetModel = require('./request')
+const messagesModel = require('./messages')
 
 module.exports = {
   models: {
-    Request: createPetModel(db),
+    Messages: messagesModel(db),
   },
   db
 }

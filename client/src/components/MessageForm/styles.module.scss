@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  flex: 0 0 50%;
+  height: 100%;
+}
+
+.formContainer {
+  border-radius: 6px;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  box-shadow: 0 2px 8px #f0f1f2;
+}

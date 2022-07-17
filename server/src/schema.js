@@ -1,30 +1,32 @@
-const { gql } = require('apollo-server')
+const { gql } = require('apollo-server');
 
 const typeDefs = gql`
-type Request {
-  id: ID!
-  type: String!
-  name: String!
-  createdAt: Int!
-}
+  scalar Void
+  
+  type Message {
+    id: String!
+    message: String!
+  }
 
-input RequestInput {
-  type: String!
-}
+  input CreateMessageInput {
+    message: String!
+  }
 
-input NewRequestInput {
-  name: String!
-  type: RequestInput!
-}
+  input UpdateMessageInput {
+    id: String!
+    message: String!
+  }
 
-type Query {
-  requests(input: RequestInput): [Request]!
-  request(id: ID!): Request!
-}
+  type Query {
+    messages: [Message]
+    message(id: String!): Message!
+  }
 
-type Mutation {
-  createRequest(input: NewRequestInput!): Request!
-}
+  type Mutation {
+    sendMessage(input: CreateMessageInput): Void
+    removeMessage(id: String!): Void
+    updateMessage(input: UpdateMessageInput): Void
+  }
 `;
 
 module.exports = typeDefs

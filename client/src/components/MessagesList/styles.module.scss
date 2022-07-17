@@ -1,0 +1,47 @@
+.container {
+  padding: 20px;
+  flex: 0 0 50%;
+  background-color: #1e1e2f;
+  height: 100%;
+}
+
+.message {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  min-width: 80px;
+}
+
+.deleteButton {
+  position: absolute !important;
+  right: -20px;
+  top: 10px;
+}
+
+.editButton {
+  position: absolute !important;
+  right: 0;
+  top: -10px;
+}
+
+.messageIcon {
+  border-radius: 50%;
+  margin-right: 10px !important;
+  border: 1px solid #4a2f49;
+}
+
+.messageText {
+  background-color: #4a2f49;
+  border-radius: 40px;
+  padding: 10px 20px;
+  position: relative;
+  min-width: 80px;
+}
+
+.spinnerContainer {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

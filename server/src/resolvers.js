@@ -1,15 +1,21 @@
 module.exports = {
   Query: {
-    requests(_, {input}, {models}) {
-      return models.Request.findMany(input || {})
+    messages(_, {input}, {models}) {
+      return models.Messages.findMany()
     },
-    request(_, {id}, {models}) {
-      return models.Request.findOne({id})
+    message(_, {id}, {models}) {
+      return models.Messages.findOne({id})
     },
   },
   Mutation: {
-    createRequest(_, {input}, {models}) {
-      return models.Request.create({...input});
+    sendMessage(_, {input}, {models}) {
+      return models.Messages.create(input);
+    },
+    removeMessage(_, {id}, {models}) {
+      return models.Messages.remove(id);
+    },
+    updateMessage(_, {input}, {models}) {
+      return models.Messages.update(input);
     }
   }
 }
