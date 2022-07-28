@@ -2,32 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="83a79ea2-bce5-4fb9-b2a5-57aa1c12adb4" name="Changes" comment="init">
-      <change afterPath="$PROJECT_DIR$/client/src/components/App/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/App/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/MessageForm/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/MessageForm/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/MessagesList/index.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/components/MessagesList/styles.module.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/context/messages.tsx" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/gql/mutations/messages.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/gql/queries/messages.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/client/src/gql/types/messages.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/server/src/db/messages.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/client/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/App.tsx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/src/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/client/yarn.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/db.json" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/db.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/db/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/request.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/db/schema.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/resolvers.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/resolvers.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/src/schema.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/src/schema.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/server/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/cache.ts" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/cache.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/components/App/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/src/components/App/index.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/client/src/logo.svg" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -134,8 +112,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.start" />
         <item itemvalue="npm.start (1)" />
+        <item itemvalue="npm.start" />
         <item itemvalue="npm.lint" />
         <item itemvalue="npm.server" />
         <item itemvalue="npm.app" />
@@ -156,7 +134,9 @@
       <workItem from="1657650101105" duration="2651000" />
       <workItem from="1657735575170" duration="4990000" />
       <workItem from="1657977310240" duration="1671000" />
-      <workItem from="1657979197467" duration="12635000" />
+      <workItem from="1657979197467" duration="13157000" />
+      <workItem from="1658485270859" duration="20000" />
+      <workItem from="1658998042441" duration="439000" />
     </task>
     <task id="LOCAL-00001" summary="init">
       <created>1657380544726</created>
@@ -172,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1657471526488</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="init">
+      <created>1658081054622</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1658081054622</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

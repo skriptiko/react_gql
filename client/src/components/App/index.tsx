@@ -3,9 +3,10 @@ import {
   ApolloClient,
   NormalizedCacheObject,
   ApolloProvider,
+  InMemoryCache,
 } from "@apollo/client";
 
-import { cache } from "../../cache";
+const cache = new InMemoryCache({});
 
 import MessagesList from "../MessagesList";
 import MessagesForm from "../MessageForm";
