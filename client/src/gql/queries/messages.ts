@@ -6,6 +6,7 @@ export const GET_MESSAGES_QUERY = gql`
       id
       text
       urgent
+      logo
     }
   }
 `;

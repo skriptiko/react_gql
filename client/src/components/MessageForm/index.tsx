@@ -1,23 +1,41 @@
-import { Form, Input, Button } from "antd";
+import { Form, Input, Button, Checkbox, Select, Avatar } from "antd";
 import { useMutation } from "@apollo/client";
 
 import { useMessages } from "../../context/messages";
 import { GET_MESSAGES_QUERY } from "../../gql/queries/messages";
+import getJoeschmoeLogo from "./utils/getJoeschmoeLogo";
 import {
-  SEND_MESSAGE_MUTATION,
+  CREATE_MESSAGE_MUTATION,
   UPDATE_MESSAGE_MUTATION,
 } from "../../gql/mutations/messages";
 
 import styles from "./styles.module.scss";
 
+const USERS = [
+  "james",
+  "jess",
+  "jeane",
+  "jean",
+  "jake",
+  "jed",
+  "jia",
+  "jabala",
+  "joe",
+  "jodi",
+  "julie",
+  "jacques",
+];
+
 interface FormTypes {
   text: string;
+  urgent: boolean;
+  logo: string;
 }
 
 function MessageForm() {
   const [form] = Form.useForm();
 
-  const [sendMessage] = useMutation(SEND_MESSAGE_MUTATION, {
+  const [createMessage] = useMutation(CREATE_MESSAGE_MUTATION, {
     refetchQueries: [{ query: GET_MESSAGES_QUERY }, "GetMessagesQuery"],
   });
   const [updateMessage] = useMutation(UPDATE_MESSAGE_MUTATION, {
@@ -26,15 +44,17 @@ function MessageForm() {
 
   const { currentMessage, setMessageToEdit } = useMessages();
 
-  const onFinish = async ({ text }: FormTypes) => {
+  const onFinish = async ({ text, urgent, logo }: FormTypes) => {
     form.resetFields();
 
     if (currentMessage) {
       setMessageToEdit(null);
 
-      await updateMessage({ variables: { id: currentMessage.id, text } });
+      await updateMessage({
+        variables: { id: currentMessage.id, text, logo, urgent },
+      });
     } else {
-      await sendMessage({ variables: { text } });
+      await createMessage({ variables: { text, logo, urgent } });
     }
   };
 
@@ -46,19 +66,46 @@ function MessageForm() {
           name="basic"
           fields={
             currentMessage
-              ? [{ name: ["text"], value: currentMessage.text }]
+              ? [
+                  { name: ["text"], value: currentMessage.text },
+                  { name: ["urgent"], value: currentMessage.urgent },
+                  { name: ["logo"], value: currentMessage.logo },
+                ]
               : undefined
           }
-          labelCol={{ span: 8 }}
-          wrapperCol={{ span: 16 }}
           onFinish={onFinish}
           autoComplete="off"
+          labelCol={{ span: 6 }}
+          wrapperCol={{ span: 18 }}
+          initialValues={{
+            logo: getJoeschmoeLogo(USERS[0]),
+            urgent: false,
+            text: "",
+          }}
         >
-          <Form.Item label="Message" name="text">
+          <Form.Item label="User" name="logo">
+            <Select style={{ width: 85 }}>
+              {USERS.map((item) => (
+                <Select.Option key={item} value={getJoeschmoeLogo(item)}>
+                  <Avatar size={40} src={getJoeschmoeLogo(item)} />
+                </Select.Option>
+              ))}
+            </Select>
+          </Form.Item>
+
+          <Form.Item
+            label="Message"
+            name="text"
+            rules={[{ required: true, message: "Please input your message" }]}
+          >
             <Input.TextArea rows={4} />
           </Form.Item>
 
-          <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+          <Form.Item label="Urgent" valuePropName="checked" name="urgent">
+            <Checkbox />
+          </Form.Item>
+
+          <Form.Item>
             <Button type="primary" htmlType="submit">
               Send
             </Button>

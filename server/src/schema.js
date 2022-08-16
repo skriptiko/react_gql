@@ -7,16 +7,21 @@ const typeDefs = gql`
     id: String!
     text: String!
     urgent: Boolean!
+    logo: String!
   }
   
 
   input CreateMessageInput {
     text: String!
+    logo: String!
+    urgent: Boolean!
   }
 
   input UpdateMessageInput {
     id: String!
     text: String!
+    logo: String!
+    urgent: Boolean!
   }
 
   input UrgentMessageInput {
@@ -31,7 +36,7 @@ const typeDefs = gql`
   }
 
   type Mutation {
-    sendMessage(input: CreateMessageInput): Void
+    createMessage(input: CreateMessageInput): Void
     removeMessage(id: String!): Void
     updateMessage(input: UpdateMessageInput): Void
     urgentMessage(input: UrgentMessageInput): Void

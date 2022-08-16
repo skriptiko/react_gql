@@ -16,11 +16,7 @@ function Message({ message }: MessageProps): JSX.Element {
 
   return (
     <div className={styles.container}>
-      <Avatar
-        size={50}
-        src="https://joeschmoe.io/api/v1/random"
-        className={styles.messageIcon}
-      />
+      <Avatar size={50} src={message.logo} className={styles.messageIcon} />
 
       <div className={styles.messageText}>
         {message.text}

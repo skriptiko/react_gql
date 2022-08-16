@@ -8,7 +8,7 @@ module.exports = {
     },
   },
   Mutation: {
-    sendMessage(_, {input}, {models}) {
+    createMessage(_, {input}, {models}) {
       return models.Messages.create(input);
     },
     removeMessage(_, {id}, {models}) {
@@ -18,7 +18,7 @@ module.exports = {
       return models.Messages.update(input);
     },
     urgentMessage(_, {input}, {models}) {
-      return models.Messages.urgentMessage(input);
+      return models.Messages.urgent(input);
     }
   }
 }

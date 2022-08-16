@@ -24,3 +24,12 @@ code {
     font-size: 18px;
   }
 }
+
+.ant-avatar {
+  border: 2px solid #e1e1e1;
+}
+
+.ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
+  height: 62px;
+  padding: 10px 10px;
+}

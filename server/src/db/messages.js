@@ -17,10 +17,14 @@ const createRequestsModel = db => {
     },
 
     update(request) {
-      db.get('messages').find({ id: request.id}).assign({text: request.text}).write();
+      db.get('messages').find({ id: request.id}).assign({
+        text: request.text,
+        urgent: request.urgent,
+        logo: request.logo
+      }).write();
     },
 
-    urgentMessage(request) {
+    urgent(request) {
       db.get('messages').find({ id: request.id}).assign({urgent: request.urgent}).write();
     }
   }
