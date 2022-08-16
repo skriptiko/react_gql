@@ -1,0 +1,30 @@
+.container {
+  display: flex;
+  align-items: center;
+  margin: 20px 0;
+  min-width: 80px;
+}
+
+.messageText {
+  background-color: #4a2f49;
+  border-radius: 40px;
+  padding: 10px 20px;
+  min-width: 80px;
+  position: relative;
+}
+
+.messageText__urgent {
+  position: absolute;
+  font-size: 13px;
+  right: -6px;
+  top: -6px;
+  color: #ffffff;
+  background-color: crimson;
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 3px;
+}

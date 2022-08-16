@@ -2,19 +2,18 @@
   "messages": [
     {
       "id": "_R2rPQ_NR0hTdxnBBSeY6",
-      "message": "Test message"
-    },
-    {
-      "id": "-NldgTCZ6PqiKKh5cQp49",
-      "message": "dfdfdf"
+      "text": "Test message",
+      "urgent": false
     },
     {
       "id": "3J1zGBKSDeMfQtH9CViTc",
-      "message": "ddd"
+      "text": "ddd",
+      "urgent": false
     },
     {
       "id": "6Ytn4PEeuDY4SOJAbV11V",
-      "message": "ddd"
+      "text": "ddd",
+      "urgent": true
     }
   ]
 }

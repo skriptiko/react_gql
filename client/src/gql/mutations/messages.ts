@@ -1,8 +1,8 @@
 import { gql } from "@apollo/client";
 
 export const SEND_MESSAGE_MUTATION = gql`
-  mutation SendMessage($message: String!) {
-    sendMessage(input: { message: $message })
+  mutation SendMessage($text: String!) {
+    sendMessage(input: { text: $text })
   }
 `;
 
@@ -13,7 +13,13 @@ export const REMOVE_MESSAGE_MUTATION = gql`
 `;
 
 export const UPDATE_MESSAGE_MUTATION = gql`
-  mutation UpdateMessage($id: String!, $message: String!) {
-    updateMessage(input: { id: $id, message: $message })
+  mutation UpdateMessage($id: String!, $text: String!) {
+    updateMessage(input: { id: $id, text: $text })
+  }
+`;
+
+export const URGENT_MESSAGE_MUTATION = gql`
+  mutation UrgentMessage($id: String!, $urgent: Boolean!) {
+    urgentMessage(input: { id: $id, urgent: $urgent })
   }
 `;

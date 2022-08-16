@@ -5,17 +5,25 @@ const typeDefs = gql`
   
   type Message {
     id: String!
-    message: String!
+    text: String!
+    urgent: Boolean!
   }
+  
 
   input CreateMessageInput {
-    message: String!
+    text: String!
   }
 
   input UpdateMessageInput {
     id: String!
-    message: String!
+    text: String!
   }
+
+  input UrgentMessageInput {
+    id: String!
+    urgent: Boolean!
+  }
+  
 
   type Query {
     messages: [Message]
@@ -26,6 +34,7 @@ const typeDefs = gql`
     sendMessage(input: CreateMessageInput): Void
     removeMessage(id: String!): Void
     updateMessage(input: UpdateMessageInput): Void
+    urgentMessage(input: UrgentMessageInput): Void
   }
 `;
 

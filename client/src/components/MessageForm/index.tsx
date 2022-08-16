@@ -11,7 +11,7 @@ import {
 import styles from "./styles.module.scss";
 
 interface FormTypes {
-  message: string;
+  text: string;
 }
 
 function MessageForm() {
@@ -26,15 +26,15 @@ function MessageForm() {
 
   const { currentMessage, setMessageToEdit } = useMessages();
 
-  const onFinish = async ({ message }: FormTypes) => {
+  const onFinish = async ({ text }: FormTypes) => {
     form.resetFields();
 
     if (currentMessage) {
       setMessageToEdit(null);
 
-      await updateMessage({ variables: { id: currentMessage.id, message } });
+      await updateMessage({ variables: { id: currentMessage.id, text } });
     } else {
-      await sendMessage({ variables: { message } });
+      await sendMessage({ variables: { text } });
     }
   };
 
@@ -46,7 +46,7 @@ function MessageForm() {
           name="basic"
           fields={
             currentMessage
-              ? [{ name: ["message"], value: currentMessage.message }]
+              ? [{ name: ["text"], value: currentMessage.text }]
               : undefined
           }
           labelCol={{ span: 8 }}
@@ -54,7 +54,7 @@ function MessageForm() {
           onFinish={onFinish}
           autoComplete="off"
         >
-          <Form.Item label="Message" name="message">
+          <Form.Item label="Message" name="text">
             <Input.TextArea rows={4} />
           </Form.Item>
 

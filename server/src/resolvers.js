@@ -16,6 +16,9 @@ module.exports = {
     },
     updateMessage(_, {input}, {models}) {
       return models.Messages.update(input);
+    },
+    urgentMessage(_, {input}, {models}) {
+      return models.Messages.urgentMessage(input);
     }
   }
 }

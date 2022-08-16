@@ -4,7 +4,8 @@ export const GET_MESSAGES_QUERY = gql`
   query GetMessagesQuery {
     messages {
       id
-      message
+      text
+      urgent
     }
   }
 `;
