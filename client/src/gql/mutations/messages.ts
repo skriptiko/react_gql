@@ -2,7 +2,12 @@ import { gql } from "@apollo/client";
 
 export const CREATE_MESSAGE_MUTATION = gql`
   mutation CreateMessage($text: String!, $logo: String!, $urgent: Boolean!) {
-    createMessage(input: { text: $text, logo: $logo, urgent: $urgent })
+    createMessage(input: { text: $text, logo: $logo, urgent: $urgent }) {
+      id
+      text
+      urgent
+      logo
+    }
   }
 `;
 
@@ -19,12 +24,24 @@ export const UPDATE_MESSAGE_MUTATION = gql`
     $logo: String!
     $urgent: Boolean!
   ) {
-    updateMessage(input: { id: $id, text: $text, logo: $logo, urgent: $urgent })
+    updateMessage(
+      input: { id: $id, text: $text, logo: $logo, urgent: $urgent }
+    ) {
+      id
+      text
+      urgent
+      logo
+    }
   }
 `;
 
 export const URGENT_MESSAGE_MUTATION = gql`
   mutation UrgentMessage($id: String!, $urgent: Boolean!) {
-    urgentMessage(input: { id: $id, urgent: $urgent })
+    urgentMessage(input: { id: $id, urgent: $urgent }) {
+      id
+      text
+      urgent
+      logo
+    }
   }
 `;

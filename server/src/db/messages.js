@@ -3,17 +3,19 @@ const nanoid = require('nanoid')
 const createRequestsModel = db => {
   return {
     findMany() {
-      return db.get('messages').value()
+      return db.get('messages').value();
     },
 
     create(request) {
-      const newRequest = {id: nanoid(), ...request}
+      const newMessage = {id: nanoid(), ...request};
 
-      db.get('messages').push(newRequest).write()
+      db.get('messages').push(newMessage).write();
+
+      return newMessage;
     },
 
     remove(id) {
-      db.get('messages').remove({ id }).write()
+      db.get('messages').remove({ id }).write();
     },
 
     update(request) {
@@ -22,10 +24,14 @@ const createRequestsModel = db => {
         urgent: request.urgent,
         logo: request.logo
       }).write();
+
+      return db.get('messages').find({ id: request.id}).value();
     },
 
     urgent(request) {
       db.get('messages').find({ id: request.id}).assign({urgent: request.urgent}).write();
+
+      return db.get('messages').find({ id: request.id}).value();
     }
   }
 }

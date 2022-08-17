@@ -3,6 +3,7 @@ import { useMutation } from "@apollo/client";
 
 import { useMessages } from "../../context/messages";
 import { GET_MESSAGES_QUERY } from "../../gql/queries/messages";
+import { GqlQueryMessages } from "../../gql/types/messages";
 import getJoeschmoeLogo from "./utils/getJoeschmoeLogo";
 import {
   CREATE_MESSAGE_MUTATION,
@@ -36,10 +37,36 @@ function MessageForm() {
   const [form] = Form.useForm();
 
   const [createMessage] = useMutation(CREATE_MESSAGE_MUTATION, {
-    refetchQueries: [{ query: GET_MESSAGES_QUERY }, "GetMessagesQuery"],
+    update(cache, { data }) {
+      const existingMessages = cache.readQuery<GqlQueryMessages>({
+        query: GET_MESSAGES_QUERY,
+      });
+      cache.writeQuery({
+        query: GET_MESSAGES_QUERY,
+        data: {
+          messages: existingMessages?.messages.concat([data.createMessage]),
+        },
+      });
+    },
   });
   const [updateMessage] = useMutation(UPDATE_MESSAGE_MUTATION, {
-    refetchQueries: [{ query: GET_MESSAGES_QUERY }, "GetMessagesQuery"],
+    update(cache, { data }) {
+      const existingMessages = cache.readQuery<GqlQueryMessages>({
+        query: GET_MESSAGES_QUERY,
+      });
+      cache.writeQuery({
+        query: GET_MESSAGES_QUERY,
+        data: {
+          messages: existingMessages?.messages.map((item) => {
+            if (item.id === data.updateMessage.id) {
+              return { ...item, ...data.updateMessage };
+            } else {
+              return item;
+            }
+          }),
+        },
+      });
+    },
   });
 
   const { currentMessage, setMessageToEdit } = useMessages();

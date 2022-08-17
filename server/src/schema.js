@@ -31,15 +31,15 @@ const typeDefs = gql`
   
 
   type Query {
-    messages: [Message]
+    messages: [Message]!
     message(id: String!): Message!
   }
 
   type Mutation {
-    createMessage(input: CreateMessageInput): Void
+    createMessage(input: CreateMessageInput): Message!
     removeMessage(id: String!): Void
-    updateMessage(input: UpdateMessageInput): Void
-    urgentMessage(input: UrgentMessageInput): Void
+    updateMessage(input: UpdateMessageInput): Message!
+    urgentMessage(input: UrgentMessageInput): Message!
   }
 `;
 
