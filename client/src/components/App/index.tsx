@@ -8,12 +8,12 @@ import {
 
 const cache = new InMemoryCache({});
 
-import MessagesList from "../MessagesList";
 import MessagesForm from "../MessageForm";
 
 import { MessagesProvider } from "../../context/messages";
 
 import styles from "./styles.module.scss";
+import MessagesView from "../MessagesView";
 
 const client: ApolloClient<NormalizedCacheObject> = new ApolloClient({
   cache,
@@ -25,7 +25,7 @@ function App() {
     <ApolloProvider client={client}>
       <MessagesProvider>
         <div className={styles.container}>
-          <MessagesList />
+          <MessagesView />
 
           <MessagesForm />
         </div>

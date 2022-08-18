@@ -1,10 +1,7 @@
 module.exports = {
   Query: {
-    messages(_, {input}, {models}) {
-      return models.Messages.findMany()
-    },
-    message(_, {id}, {models}) {
-      return models.Messages.findOne({id})
+    messages(_, {urgent}, {models}) {
+      return models.Messages.findMany(urgent);
     },
   },
   Mutation: {

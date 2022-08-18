@@ -31,8 +31,7 @@ const typeDefs = gql`
   
 
   type Query {
-    messages: [Message]!
-    message(id: String!): Message!
+    messages(urgent: Boolean): [Message]!
   }
 
   type Mutation {

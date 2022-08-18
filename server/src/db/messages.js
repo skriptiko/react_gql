@@ -2,12 +2,16 @@ const nanoid = require('nanoid')
 
 const createRequestsModel = db => {
   return {
-    findMany() {
+    findMany(urgent) {
+      if (urgent) {
+        return db.get('messages').filter((item) => item.urgent).value();
+      }
+
       return db.get('messages').value();
     },
 
     create(request) {
-      const newMessage = {id: nanoid(), ...request};
+      const newMessage = { id: nanoid(), ...request };
 
       db.get('messages').push(newMessage).write();
 
@@ -19,13 +23,13 @@ const createRequestsModel = db => {
     },
 
     update(request) {
-      db.get('messages').find({ id: request.id}).assign({
+      db.get('messages').find({ id: request.id }).assign({
         text: request.text,
         urgent: request.urgent,
         logo: request.logo
       }).write();
 
-      return db.get('messages').find({ id: request.id}).value();
+      return db.get('messages').find({ id: request.id }).value();
     },
 
     urgent(request) {

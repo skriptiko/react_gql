@@ -1,0 +1,16 @@
+.container {
+  display: flex;
+  align-items: flex-start;
+  padding: 20px;
+  flex: 0 0 50%;
+  height: 100%;
+  flex-direction: column;
+  background-color: #1e1e2f;
+  position: relative;
+}
+
+.filterButton {
+  position: absolute !important;
+  top: 20px;
+  right: 20px;
+}
