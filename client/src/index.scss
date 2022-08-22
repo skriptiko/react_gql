@@ -29,7 +29,31 @@ code {
   border: 2px solid #e1e1e1;
 }
 
+.ant-input-search {
+  width: 200px;
+}
+
 .ant-select-single:not(.ant-select-customize-input) .ant-select-selector {
   height: 62px;
   padding: 10px 10px;
+}
+
+.ant-input-search .ant-input-group .ant-input-affix-wrapper:not(:last-child) {
+  width: 200px;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  background-color: #4a2f49;
+
+  input {
+    background-color: transparent;
+  }
+}
+
+.ant-input-search-button {
+  border-top-right-radius: 10px !important;
+  border-bottom-right-radius: 10px !important;
+}
+
+.ant-input-group-addon {
+  background-color: transparent;
 }

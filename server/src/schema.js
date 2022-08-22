@@ -28,10 +28,15 @@ const typeDefs = gql`
     id: String!
     urgent: Boolean!
   }
+
+  input FilterMessageInput {
+    urgent: Boolean
+    text: String
+  }
   
 
   type Query {
-    messages(urgent: Boolean): [Message]!
+    messages(input: FilterMessageInput): [Message]!
   }
 
   type Mutation {

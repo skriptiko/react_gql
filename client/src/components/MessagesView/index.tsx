@@ -1,5 +1,5 @@
 import { useQuery } from "@apollo/client";
-import { Button, Spin } from "antd";
+import { Button, Spin, Input } from "antd";
 import { AlertOutlined } from "@ant-design/icons";
 import { useEffect, useState } from "react";
 
@@ -17,11 +17,15 @@ function MessagesView() {
 
   useEffect(() => {
     const refetchQuery = async () => {
-      await refetch({ urgent: filterUrgent });
+      await refetch({ input: { urgent: filterUrgent } });
     };
 
     refetchQuery().then();
   }, [filterUrgent]);
+
+  const handleSearch = async (value: string) => {
+    await refetch({ input: { text: value } });
+  };
 
   return (
     <div className={styles.container}>
@@ -32,6 +36,13 @@ function MessagesView() {
         type="primary"
         className={styles.filterButton}
         onClick={() => setFilterUrgent(!filterUrgent)}
+      />
+
+      <Input.Search
+        placeholder="input search text"
+        allowClear
+        onSearch={handleSearch}
+        onChange={(e) => handleSearch(e.target.value)}
       />
 
       {loading && (

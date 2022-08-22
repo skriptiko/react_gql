@@ -11,3 +11,8 @@ export interface GqlUrgentMessagesInput {
   id: string;
   urgent: boolean;
 }
+
+export interface GqlFilterMessagesInput {
+  text: string;
+  urgent: boolean;
+}

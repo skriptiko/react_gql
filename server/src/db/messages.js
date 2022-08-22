@@ -2,9 +2,13 @@ const nanoid = require('nanoid')
 
 const createRequestsModel = db => {
   return {
-    findMany(urgent) {
-      if (urgent) {
+    findMany(input) {
+      if (input.urgent) {
         return db.get('messages').filter((item) => item.urgent).value();
+      }
+
+      if (input.text) {
+        return db.get('messages').filter((item) => item.text.includes(input.text)).value();
       }
 
       return db.get('messages').value();
