@@ -20,10 +20,10 @@ describe("MessagesView", () => {
     data: {
       messages: [
         {
-          id: "3J1zGBKSDeMfQtH9CViTc",
+          id: "id",
           text: "ddd",
           urgent: true,
-          logo: "https://joeschmoe.io/api/v1/jacques",
+          logo: "link",
         },
       ],
     },

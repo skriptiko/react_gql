@@ -125,7 +125,7 @@ function MessageForm() {
             name="text"
             rules={[{ required: true, message: "Please input your message" }]}
           >
-            <Input.TextArea rows={4} />
+            <Input.TextArea rows={4} data-testid="textarea" />
           </Form.Item>
 
           <Form.Item label="Urgent" valuePropName="checked" name="urgent">
