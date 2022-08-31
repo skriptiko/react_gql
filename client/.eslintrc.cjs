@@ -2,10 +2,10 @@ module.exports = {
   extends: [
     'airbnb-typescript',
     'plugin:@typescript-eslint/recommended',
-    'plugin:jest/recommended',
+    'plugin:jest-dom/recommended',
     'plugin:prettier/recommended'
   ],
-  plugins: ['react', '@typescript-eslint', 'jest'],
+  plugins: ['react', '@typescript-eslint', 'jest-dom'],
   env: {
     browser: true,
     es6: true,

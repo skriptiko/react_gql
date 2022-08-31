@@ -35,6 +35,7 @@ function MessagesView() {
         shape="circle"
         type="primary"
         className={styles.filterButton}
+        data-testid="urgent-button"
         onClick={() => setFilterUrgent(!filterUrgent)}
       />
 
@@ -42,18 +43,17 @@ function MessagesView() {
         placeholder="input search text"
         allowClear
         onSearch={handleSearch}
+        data-testid="search"
         onChange={(e) => handleSearch(e.target.value)}
       />
 
       {loading && (
-        <div className={styles.spinnerContainer}>
+        <div data-testid="loading" className={styles.spinnerContainer}>
           <Spin size="large" />
         </div>
       )}
 
-      {data?.messages && (
-        <MessagesList messages={data.messages} loading={loading} />
-      )}
+      {data?.messages && <MessagesList messages={data?.messages} />}
     </div>
   );
 }
