@@ -26,8 +26,8 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "test:coverage": "react-scripts test --coverage",
+    "test": "react-scripts test --watchAll",
+    "test:coverage": "react-scripts test --coverage --watchAll",
     "eject": "react-scripts eject",
     "format": "prettier --write src/**/*.ts{,x}",
     "lint": "tsc --noEmit && eslint --fix src/**/*.ts{,x}"
@@ -39,7 +39,14 @@
     ]
   },
   "jest": {
-    "resetMocks": false
+    "resetMocks": false,
+    "collectCoverageFrom": [
+      "src/**/*.tsx"
+    ],
+    "watchPathIgnorePatterns": [
+      "src/index.tsx",
+      "src/components/App"
+    ]
   },
   "browserslist": {
     "production": [

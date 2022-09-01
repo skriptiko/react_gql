@@ -53,7 +53,7 @@ function MessagesView() {
         </div>
       )}
 
-      {data?.messages && <MessagesList messages={data?.messages} />}
+      {!loading && data?.messages && <MessagesList messages={data?.messages} />}
     </div>
   );
 }

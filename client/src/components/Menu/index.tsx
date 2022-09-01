@@ -16,7 +16,7 @@ function Menu({ items, onClick }: MenuProps): JSX.Element {
 
   return (
     <Antd.Dropdown overlay={menu} className={styles.container}>
-      <div onClick={(e) => e.preventDefault()}>
+      <div>
         <Antd.Space>
           <EllipsisOutlined className={styles.ellipsisIcon} />
         </Antd.Space>
