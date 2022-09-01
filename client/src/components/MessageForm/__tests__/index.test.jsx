@@ -61,7 +61,7 @@ describe("MessagesForm", () => {
   });
 
   it("expect create message form work properly", async () => {
-    const resultFn = jest.fn().mockReturnValue({
+    const resultSpy = jest.fn().mockReturnValue({
       data: { messages: [] },
     });
 
@@ -77,8 +77,8 @@ describe("MessagesForm", () => {
                 urgent: false,
               },
             },
-            result: resultFn,
-            newData: resultFn,
+            result: resultSpy,
+            newData: resultSpy,
           },
         ]}
       >
@@ -93,11 +93,11 @@ describe("MessagesForm", () => {
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => expect(resultFn).toBeCalledTimes(1));
+    await waitFor(() => expect(resultSpy).toBeCalledTimes(1));
   });
 
   it("expect update message form work properly", async () => {
-    const resultFn = jest.fn().mockReturnValue({
+    const resultSpy = jest.fn().mockReturnValue({
       data: { messages: [] },
     });
 
@@ -114,8 +114,8 @@ describe("MessagesForm", () => {
                 urgent: true,
               },
             },
-            result: resultFn,
-            newData: resultFn,
+            result: resultSpy,
+            newData: resultSpy,
           },
         ]}
       >
@@ -139,6 +139,6 @@ describe("MessagesForm", () => {
 
     fireEvent.click(submitButton);
 
-    await waitFor(() => expect(resultFn).toBeCalledTimes(1));
+    await waitFor(() => expect(resultSpy).toBeCalledTimes(1));
   });
 });

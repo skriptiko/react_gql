@@ -15,7 +15,7 @@ global.matchMedia =
   };
 
 describe("MessagesView", () => {
-  const resultFn = jest.fn().mockReturnValue({
+  const resultSpy = jest.fn().mockReturnValue({
     data: {
       messages: [
         {
@@ -37,21 +37,21 @@ describe("MessagesView", () => {
               query: GET_MESSAGES_QUERY,
               variables: { input: { urgent: false } },
             },
-            result: resultFn,
+            result: resultSpy,
           },
           {
             request: {
               query: GET_MESSAGES_QUERY,
               variables: { input: { urgent: true } },
             },
-            result: resultFn,
+            result: resultSpy,
           },
           {
             request: {
               query: GET_MESSAGES_QUERY,
               variables: { input: { text: "s" } },
             },
-            result: resultFn,
+            result: resultSpy,
           },
         ]}
         addTypename={false}
@@ -79,22 +79,22 @@ describe("MessagesView", () => {
   it("expect refetch urgent messages", async () => {
     const button = await screen.findByTestId("urgent-button");
 
-    expect(resultFn).toBeCalledTimes(0);
+    expect(resultSpy).toBeCalledTimes(0);
 
     fireEvent.click(button);
 
-    await waitFor(() => expect(resultFn).toBeCalledTimes(2));
+    await waitFor(() => expect(resultSpy).toBeCalledTimes(2));
   });
 
   it("expect refetch search messages", async () => {
     const search = await screen.findByTestId("search");
 
-    expect(resultFn).toBeCalledTimes(0);
+    expect(resultSpy).toBeCalledTimes(0);
 
     fireEvent.change(search, { target: { value: "s" } });
 
     await waitFor(() => {
-      expect(resultFn).toBeCalledTimes(2);
+      expect(resultSpy).toBeCalledTimes(2);
       expect(search).toHaveValue("s");
     });
   });

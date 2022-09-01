@@ -41,9 +41,9 @@ function TestComponent() {
 }
 
 describe("useMenuActions", () => {
-  const removeResultFn = jest.fn();
-  const urgentResultFn = jest.fn();
-  const setMessageFn = jest.fn();
+  const removeResultSpy = jest.fn();
+  const urgentResultSpy = jest.fn();
+  const setMessageSpy = jest.fn();
 
   it("expect menu handle function work properly", async () => {
     const { getAllByTestId, findByTestId } = render(
@@ -54,21 +54,21 @@ describe("useMenuActions", () => {
               query: REMOVE_MESSAGE_MUTATION,
               variables: { id: "id" },
             },
-            result: removeResultFn,
-            newData: removeResultFn,
+            result: removeResultSpy,
+            newData: removeResultSpy,
           },
           {
             request: {
               query: URGENT_MESSAGE_MUTATION,
               variables: { id: "id", urgent: false },
             },
-            result: urgentResultFn,
-            newData: urgentResultFn,
+            result: urgentResultSpy,
+            newData: urgentResultSpy,
           },
         ]}
       >
         <MessagesContext.Provider
-          value={{ currentMessage: null, setMessageToEdit: setMessageFn }}
+          value={{ currentMessage: null, setMessageToEdit: setMessageSpy }}
         >
           <TestComponent />
         </MessagesContext.Provider>
@@ -81,14 +81,14 @@ describe("useMenuActions", () => {
 
     fireEvent.click(button, { target: { value: "1" } });
 
-    expect(setMessageFn).toBeCalledTimes(1);
+    expect(setMessageSpy).toBeCalledTimes(1);
 
     fireEvent.click(button, { target: { value: "2" } });
 
-    await waitFor(() => expect(urgentResultFn).toBeCalledTimes(1));
+    await waitFor(() => expect(urgentResultSpy).toBeCalledTimes(1));
 
     fireEvent.click(button, { target: { value: "3" } });
 
-    await waitFor(() => expect(removeResultFn).toBeCalledTimes(1));
+    await waitFor(() => expect(removeResultSpy).toBeCalledTimes(1));
   });
 });
