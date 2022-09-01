@@ -1,7 +1,6 @@
 import "@testing-library/jest-dom";
-import { render, waitFor, screen } from "@testing-library/react";
+import { render, waitFor, screen, fireEvent } from "@testing-library/react";
 import { MockedProvider } from "@apollo/client/testing";
-import userEvent from "@testing-library/user-event";
 
 import MessagesView from "../index";
 import { GET_MESSAGES_QUERY } from "../../../gql/queries/messages";
@@ -82,9 +81,9 @@ describe("MessagesView", () => {
 
     expect(resultFn).toBeCalledTimes(0);
 
-    await userEvent.click(button);
+    fireEvent.click(button);
 
-    expect(resultFn).toBeCalledTimes(2);
+    await waitFor(() => expect(resultFn).toBeCalledTimes(2));
   });
 
   it("expect refetch search messages", async () => {
@@ -92,10 +91,11 @@ describe("MessagesView", () => {
 
     expect(resultFn).toBeCalledTimes(0);
 
-    await userEvent.type(search, "s");
+    fireEvent.change(search, { target: { value: "s" } });
 
-    expect(search).toHaveValue("s");
-
-    expect(resultFn).toBeCalledTimes(2);
+    await waitFor(() => {
+      expect(resultFn).toBeCalledTimes(2);
+      expect(search).toHaveValue("s");
+    });
   });
 });
