@@ -2,16 +2,13 @@ import { useMutation } from "@apollo/client";
 import { AlertOutlined, DeleteOutlined, EditOutlined } from "@ant-design/icons";
 import { ItemType } from "antd/lib/menu/hooks/useItems";
 
-import { useMessages } from "../../../context/messages";
-import { GET_MESSAGES_QUERY } from "../../../gql/queries/messages";
+import { useMessages } from "../context/messages";
+import { GET_MESSAGES_QUERY } from "../gql/queries/messages";
 import {
   REMOVE_MESSAGE_MUTATION,
   URGENT_MESSAGE_MUTATION,
-} from "../../../gql/mutations/messages";
-import {
-  GqlMessage,
-  GqlUrgentMessagesInput,
-} from "../../../gql/types/messages";
+} from "../gql/mutations/messages";
+import { GqlMessage, GqlUrgentMessagesInput } from "../gql/types/messages";
 
 function useMenuActions(message: GqlMessage) {
   const { setMessageToEdit } = useMessages();

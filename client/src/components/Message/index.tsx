@@ -3,7 +3,7 @@ import { AlertOutlined } from "@ant-design/icons";
 
 import Menu from "../Menu";
 import { GqlMessage } from "../../gql/types/messages";
-import useMenuActions from "./hooks/useMenuActions";
+import useMenuActions from "../../hooks/useMenuActions";
 
 import styles from "./styles.module.scss";
 
